@@ -3,9 +3,9 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/cardtonic/refs/heads/main/apis.yml
 name: Cardtonic
 tags:
+  - Finance
   - Gift Cards
   - Payments
-  - Finance
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
