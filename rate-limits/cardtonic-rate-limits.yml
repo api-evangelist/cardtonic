@@ -4,101 +4,34 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Cardtonic
 providerId: cardtonic
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Africa
-  - Bill Payments
-  - eSIM
-  - Finance
   - Fintech
   - Gift Cards
-  - Ghana
-  - Nigeria
-  - Payments
-  - Virtual Dollar Cards
+  - Africa
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Cardtonic API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Cardtonic does not publish API rate limits. The Gift Card Developer API is waitlist-only
+  and rate parameters are set per merchant at onboarding.
+notes: No public rate-limit documentation found. Treat all caps as merchant-contract-defined.
+sources:
+  - https://www.cardtonic.com/
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Cardtonic Gift Card Developer API
-      - Cardtonic Virtual Dollar Card
-      - Cardtonic Bill Payments
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Cardtonic Gift Card Developer API
-      - Cardtonic Virtual Dollar Card
-      - Cardtonic Bill Payments
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Cardtonic Gift Card Developer API
-      - Cardtonic Virtual Dollar Card
-      - Cardtonic Bill Payments
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Cardtonic Gift Card Developer API
-      - Cardtonic Virtual Dollar Card
-      - Cardtonic Bill Payments
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Cardtonic Gift Card Developer API
-      - Cardtonic Virtual Dollar Card
-      - Cardtonic Bill Payments
+  - name: Per-merchant contract limit
+    scope: merchant
+    metric: varies
+    limit: see merchant onboarding
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Merchant scoping
+    description: Rate caps are scoped to the merchant's API credential and configured during onboarding.
+  - name: Backoff strategy
+    description: Implement exponential backoff with jitter on 429 responses; coordinate sustained traffic
+      with the Cardtonic technical contact.
+  - name: PCI DSS scope
+    description: As a PCI DSS-certified processor, sensitive card flows have additional fraud-throttling
+      that may not be visible as a request-rate limit.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
