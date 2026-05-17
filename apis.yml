@@ -15,7 +15,7 @@ description: >-
   merchants embed gift card purchasing, sales, bulk ordering, inventory,
   and redemption into websites, mobile apps, and point-of-sale systems.
 type: Index
-x-type: company
+kind: company
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -54,7 +54,7 @@ apis:
       - url: https://cardtonic.com/developer
         type: Documentation
       - url: https://cardtonic.com/developer
-        type: Signup
+        type: SignUp
       - url: openapi/cardtonic-openapi.yml
         type: OpenAPI
     x-features:
@@ -133,7 +133,7 @@ common:
     url: https://dashboard.cardtonic.com/
   - type: Login
     url: https://cardtonic.com/login
-  - type: Sign Up
+  - type: SignUp
     url: https://cardtonic.com/register
   - type: About
     url: https://cardtonic.com/about
@@ -143,9 +143,9 @@ common:
     url: https://cardtonic.com/faq
   - type: Contact
     url: https://cardtonic.com/contact
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://cardtonic.com/terms
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://cardtonic.com/privacy
   - type: X
     url: https://x.com/cardtonic
