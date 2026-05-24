@@ -153,6 +153,8 @@ common:
     url: https://www.linkedin.com/company/cardtonic
   - type: Instagram
     url: https://www.instagram.com/cardtonic/
+  - type: LLMsTxt
+    url: https://cardtonic.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
