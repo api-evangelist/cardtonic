@@ -54,7 +54,7 @@ apis:
       - url: https://cardtonic.com/developer
         type: Documentation
       - url: https://cardtonic.com/developer
-        type: SignUp
+        type: Signup
       - url: openapi/cardtonic-openapi.yml
         type: OpenAPI
     x-features:
@@ -133,7 +133,7 @@ common:
     url: https://dashboard.cardtonic.com/
   - type: Login
     url: https://cardtonic.com/login
-  - type: SignUp
+  - type: Signup
     url: https://cardtonic.com/register
   - type: About
     url: https://cardtonic.com/about
@@ -153,7 +153,7 @@ common:
     url: https://www.linkedin.com/company/cardtonic
   - type: Instagram
     url: https://www.instagram.com/cardtonic/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://cardtonic.com/llms.txt
 maintainers:
   - FN: Kin Lane
