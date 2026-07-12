@@ -125,6 +125,8 @@ apis:
       - Diaspora bill pay for family members
       - Agent-banking and mobile-money integrations
 common:
+  - type: DomainSecurity
+    url: security/cardtonic-domain-security.yml
   - type: Website
     url: https://cardtonic.com/
   - type: Developer
