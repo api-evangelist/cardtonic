@@ -2,11 +2,10 @@
   "repo": "cardtonic",
   "feeds": [
     {
-      "source": "https://cardtonic.com/blog",
-      "saved": 0,
-      "error": "HTTP 404 on blog listing (also /blogs 404)"
+      "source": "https://cardtonic.com/about",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-27T12:30:46Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
