@@ -44,7 +44,7 @@ tags:
   - Virtual Dollar Cards
 created: '2025-02-08'
 modified: '2026-04-23'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: cardtonic:gift-card-developer-api
     name: Cardtonic Gift Card Developer API
