@@ -6,8 +6,8 @@ providerId: cardtonic
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+method: searched
+modified: '2026-09-05'
 reconciled: false
 tags:
   - Africa
@@ -24,10 +24,25 @@ description: Cardtonic is an Africa-focused gift-card and fintech platform. Its 
   is currently waitlist-only and has no published pricing. Consumer-facing services (gift card trading,
   virtual dollar cards, bill payments, eSIMs) carry per-transaction take rates that are quoted at the
   point of sale rather than as a public tariff sheet.
-notes: No public API pricing page found. Gift Card Developer API is waitlist-only; rates are negotiated
-  during onboarding. Reconcile when Cardtonic publishes a developer pricing page.
+notes: >-
+  Re-searched 2026-09-05 and re-confirmed: Cardtonic publishes no developer pricing of any kind.
+  https://cardtonic.com/pricing returns 404; https://cardtonic.com/developer carries feature copy
+  and a Notion waitlist link (https://thetonictech.notion.site/18807c8de3018052a505f9eb67411054)
+  but no tier, rate, quota or overage; the API documentation at https://docs.cardtonic.com is
+  purely technical and mentions no commercial terms. plan_count is 1 only because the waitlist
+  merchant agreement is a real, named route to access - it is not a published tariff.
+plan_count: 1
 sources:
-  - https://www.cardtonic.com/
+  - url: https://cardtonic.com/developer
+    status: 200
+    note: waitlist + feature copy, no pricing
+  - url: https://cardtonic.com/pricing
+    status: 404
+  - url: https://docs.cardtonic.com
+    status: 200
+    note: 14 operations, no commercial terms
+  - url: https://www.cardtonic.com/
+    status: 200
 plans:
   - id: cardtonic-developer-waitlist
     name: Gift Card Developer API (Waitlist)

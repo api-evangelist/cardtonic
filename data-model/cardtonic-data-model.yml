@@ -1,0 +1,167 @@
+specification: API Commons Data Model
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: derived
+source: request bodies and response schemas in openapi/cardtonic-openapi.yml (harvested from https://docs.cardtonic.com)
+modified: '2026-09-05'
+description: >-
+  Entity graph derived from the published Cardtonic Business API. The contract declares no
+  components.schemas at all - every shape is inlined in an operation - so entities below are named
+  from the operations that produce them and relationships are read from field co-occurrence, not
+  from $ref links. No entity exposes a documented identifier field, which is the single largest gap
+  in the model: nothing in the published surface can be addressed by id.
+schemas_declared: 0
+schemas_note: 'components.schemas is an empty object in the published contract; all shapes are inline.'
+entities:
+  - name: BusinessUser
+    description: >-
+      The account created by POST /auth/signup/business. Carries name, email, phoneNumber, username,
+      country and password, plus an embedded business object.
+    fields:
+      - name
+      - email
+      - phoneNumber
+      - username
+      - country
+      - password
+    identifier: null
+    produced_by:
+      - signUpBusinessUser
+    read_by: []
+    mutated_by:
+      - changePassword
+      - resetPassword
+      - verifyEmail
+      - enable2fa
+      - disable2fa
+  - name: Business
+    description: >-
+      Merchant profile embedded in the signup request - name, website and description, all required.
+      It is never returned or updated by any published operation.
+    fields:
+      - name
+      - website
+      - description
+    identifier: null
+    produced_by:
+      - signUpBusinessUser
+  - name: VerificationToken
+    description: >-
+      Opaque string used by the email-verification and password-reset flows. Delivered out of band
+      by email; consumed in the request body, not a header.
+    fields:
+      - token
+    produced_by:
+      - resendEmailVerification
+      - forgotPassword
+    consumed_by:
+      - verifyEmail
+      - resetPassword
+  - name: ApiKey
+    description: >-
+      Long-lived credential minted for the business account. Cardtonic's own example shows a PRIV_
+      prefix followed by 64 hex characters.
+    fields:
+      - apiKey
+    identifier: null
+    produced_by:
+      - generateApiKey
+    read_by:
+      - fetchApiKey
+    note: No revoke or rotate operation is published.
+  - name: KycSubmission
+    description: >-
+      Corporate verification package - an array of document URLs plus an array of shareholder
+      records. Submitted once; no read-back, amend or withdraw operation exists.
+    fields:
+      - documents
+      - shareHoldersInfo
+    produced_by:
+      - verifyKyc
+  - name: ShareHolder
+    description: 'Beneficial-owner record inside a KycSubmission.'
+    fields:
+      - firstName
+      - lastName
+      - email
+      - phoneNumber
+      - id
+    note: >-
+      The "id" field is a document URL (an identity document image), not a system identifier - the
+      example value is a staging.assets.cardtonic.com URL.
+    produced_by:
+      - verifyKyc
+  - name: Bvn
+    description: 'Central Bank of Nigeria Bank Verification Number submitted for individual KYC.'
+    fields:
+      - bvn
+    produced_by:
+      - addBvn
+  - name: UploadedFile
+    description: >-
+      File descriptor returned by PUT /users/upload - name, type, url and imageUrl. The url is the
+      value a KycSubmission then references.
+    fields:
+      - name
+      - type
+      - url
+      - imageUrl
+    produced_by:
+      - uploadFile
+relationships:
+  - from: BusinessUser
+    to: Business
+    type: has_one
+    via: 'business (embedded object in the signup request body)'
+    confidence: high
+  - from: BusinessUser
+    to: ApiKey
+    type: has_one
+    via: 'authenticated session - generateApiKey / fetchApiKey act on the calling account'
+    confidence: medium
+    note: 'No field links them; the binding is implicit in the authenticated caller.'
+  - from: BusinessUser
+    to: KycSubmission
+    type: has_one
+    via: 'authenticated session'
+    confidence: medium
+  - from: KycSubmission
+    to: ShareHolder
+    type: has_many
+    via: shareHoldersInfo[]
+    confidence: high
+  - from: KycSubmission
+    to: UploadedFile
+    type: has_many
+    via: 'documents[] - each entry is an UploadedFile.url returned by uploadFile'
+    confidence: high
+  - from: ShareHolder
+    to: UploadedFile
+    type: has_one
+    via: 'id - holds an uploaded identity-document URL'
+    confidence: high
+  - from: BusinessUser
+    to: VerificationToken
+    type: has_many
+    via: 'email delivery - token is not returned by any API response'
+    confidence: medium
+  - from: BusinessUser
+    to: Bvn
+    type: has_one
+    via: 'authenticated session'
+    confidence: medium
+id_prefixes:
+  - prefix: PRIV_
+    entity: ApiKey
+    evidence: 'data.apiKey example in the generateApiKey 200 response'
+gaps:
+  - No entity exposes a system identifier field - nothing in the published surface is addressable by id.
+  - No components.schemas means no reusable types and no $ref graph; every consumer re-implements every shape.
+  - >-
+      The gift-card domain entities advertised at https://cardtonic.com/developer (gift card, order,
+      inventory item, redemption) appear in NO published contract and are deliberately absent here.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

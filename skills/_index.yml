@@ -1,0 +1,50 @@
+specification: Agent Skills Index
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: generated
+source: >-
+  Generated from openapi/cardtonic-openapi.yml, which was harvested from Cardtonic's own published
+  documentation at https://docs.cardtonic.com. Cardtonic publishes no skills, AGENTS.md or agent
+  packaging of its own - probed 2026-09-05.
+modified: '2026-09-05'
+api: cardtonic:business-api
+description: >-
+  Three packaged Agent Skills covering the marquee flows of the published Cardtonic Business API.
+  Every operationId referenced below exists in openapi/cardtonic-openapi.yml. The gift-card
+  purchase, sale and bulk-order flows advertised at https://cardtonic.com/developer have no
+  published contract and therefore have no skill.
+skills:
+  - name: cardtonic-business-onboarding
+    file: skills/cardtonic-business-onboarding.md
+    description: Create and activate a Cardtonic business account - signup, email verification, login.
+    operations:
+      - signUpBusinessUser
+      - resendEmailVerification
+      - verifyEmail
+      - loginBusiness
+  - name: cardtonic-api-credentials
+    file: skills/cardtonic-api-credentials.md
+    description: Complete business KYC and mint the PRIV_ API key that authenticates a merchant integration.
+    operations:
+      - uploadFile
+      - verifyKyc
+      - addBvn
+      - generateApiKey
+      - fetchApiKey
+  - name: cardtonic-account-security
+    file: skills/cardtonic-account-security.md
+    description: Two-factor enrollment, password change, and password recovery.
+    operations:
+      - enable2fa
+      - disable2fa
+      - changePassword
+      - forgotPassword
+      - resetPassword
+coverage:
+  operations_total: 14
+  operations_covered: 14
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

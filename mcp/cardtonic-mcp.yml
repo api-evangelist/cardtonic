@@ -1,0 +1,94 @@
+specification: API Commons MCP
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: derived
+source: >-
+  Derived from openapi/cardtonic-openapi.yml. No Cardtonic MCP server exists: POST tools/list to
+  https://api.cardtonic.com/mcp and https://mcp.cardtonic.com/mcp both returned 404 on 2026-09-05,
+  /.well-known/ai-plugin.json returns 404 on every Cardtonic host, and no npm or PyPI package named
+  for Cardtonic exists.
+modified: '2026-09-05'
+status: candidate
+description: >-
+  A CANDIDATE tool list derived from Cardtonic's published OpenAPI operations. Cardtonic ships no
+  MCP server of any kind. Nothing below is offered by the provider; each entry inherits its input
+  schema from the named OpenAPI operation.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+  note: >-
+    Probed 2026-09-05: https://api.cardtonic.com/mcp -> 404, https://mcp.cardtonic.com/mcp -> 404,
+    https://cardtonic.com/.well-known/ai-plugin.json -> 404. npm registry search for "cardtonic"
+    returned 0 packages; pypi.org/pypi/cardtonic/json -> 404. No hosted endpoint and no stdio
+    package to install.
+tools:
+  - name: cardtonic_signup_business_user
+    description: Create a Cardtonic business account and its embedded merchant profile.
+    rest: signUpBusinessUser
+    mutating: true
+  - name: cardtonic_verify_email
+    description: Complete email verification for a business account using an emailed token.
+    rest: verifyEmail
+    mutating: true
+  - name: cardtonic_resend_email_verification
+    description: Re-send the email-verification message for an unverified business account.
+    rest: resendEmailVerification
+    mutating: true
+  - name: cardtonic_login_business
+    description: Exchange business email and password for a session token.
+    rest: loginBusiness
+    mutating: false
+  - name: cardtonic_forgot_password
+    description: Start the password-recovery flow for a business account.
+    rest: forgotPassword
+    mutating: true
+  - name: cardtonic_reset_password
+    description: Complete password recovery using the emailed reset token.
+    rest: resetPassword
+    mutating: true
+  - name: cardtonic_add_bvn
+    description: Submit a Nigerian Bank Verification Number for individual KYC.
+    rest: addBvn
+    mutating: true
+  - name: cardtonic_enable_2fa
+    description: Enable two-factor authentication on the business account.
+    rest: enable2fa
+    mutating: true
+  - name: cardtonic_disable_2fa
+    description: Disable two-factor authentication on the business account.
+    rest: disable2fa
+    mutating: true
+  - name: cardtonic_generate_api_key
+    description: Mint a new PRIV_-prefixed Cardtonic API key for the business account.
+    rest: generateApiKey
+    mutating: true
+  - name: cardtonic_fetch_api_key
+    description: Read back the business account's current API key.
+    rest: fetchApiKey
+    mutating: false
+  - name: cardtonic_change_password
+    description: Change the password on an authenticated business account.
+    rest: changePassword
+    mutating: true
+  - name: cardtonic_verify_kyc
+    description: Submit corporate documents and shareholder records for business KYC.
+    rest: verifyKyc
+    mutating: true
+  - name: cardtonic_upload_file
+    description: Upload a file and receive the URL a KYC submission references.
+    rest: uploadFile
+    mutating: true
+caveats:
+  - 13 of these 14 candidate tools are mutating and the API publishes no idempotency mechanism.
+  - >-
+      Only cardtonic_disable_2fa reverses another tool; issued API keys, KYC submissions, uploads and
+      account creation have no published undo (conventions/cardtonic-conventions.yml).
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

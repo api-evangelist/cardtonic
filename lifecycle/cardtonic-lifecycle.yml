@@ -1,0 +1,76 @@
+specification: API Commons Lifecycle
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://docs.cardtonic.com, https://cardtonic.com/developer, https://status.cardtonic.com/ and
+  openapi/cardtonic-openapi.yml
+modified: '2026-09-05'
+description: >-
+  Cardtonic runs a URI-versioned API (/v1) and a first-party status page, but publishes no
+  versioning policy, no deprecation policy, no changelog and no SLA. Every documented operation is
+  marked non-deprecated and "released" in the source project.
+versioning:
+  style: uri-path
+  current_version: v1
+  base: https://api.cardtonic.com/v1
+  policy_published: false
+  policy_url: null
+  evidence: 'servers[0].url in openapi/cardtonic-openapi.yml'
+  note: >-
+    A version segment exists but nothing states what a v2 would mean, how long v1 is supported, or
+    how a breaking change is announced.
+deprecation:
+  policy_published: false
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  evidence: >-
+    All 14 operations carry `deprecated: false` and `x-apidog-status: released` in the harvested
+    contract; no Sunset or Deprecation response header is declared anywhere.
+changelog:
+  published: false
+  url: null
+  evidence: 'https://docs.cardtonic.com/changelog -> 404 (probed 2026-09-05)'
+  note: >-
+    The Apidog docs site publishes no release notes and no dated entries. The consumer blog at
+    https://cardtonic.com/read is product marketing, not an API changelog.
+status_page:
+  published: true
+  url: https://status.cardtonic.com/
+  platform: OneUptime
+  http_status: 200
+  probed: '2026-09-05'
+  machine_readable_feed: null
+  caveat: >-
+    The page is a first-party OneUptime deployment on Cardtonic's own subdomain and answers 200, but
+    it is fully JS-rendered and its document title is still OneUptime's default "Status Page" - no
+    Cardtonic-named component or incident history could be read without executing JavaScript, and no
+    JSON/RSS incident feed was found.
+sla:
+  published: false
+  url: null
+  note: >-
+    No uptime commitment, support-response target or credit schedule appears on
+    https://cardtonic.com/developer or anywhere in the documentation.
+maturity:
+  stage: waitlist
+  evidence: >-
+    https://cardtonic.com/developer routes prospective integrators to a Notion waitlist
+    (https://thetonictech.notion.site/18807c8de3018052a505f9eb67411054) rather than to
+    self-service signup; credentials are issued on request.
+  note: >-
+    api.cardtonic.com resolves through Cloudflare but returned a plain-text "404 page not found" on
+    /, /v1 and on the documented paths to an anonymous caller on 2026-09-05.
+support:
+  email: support@cardtonic.com
+  help_center: https://help.cardtonic.com/en/
+  legal_rfi: legal@cardtonic.com
+  phone: '+234 (0) 1 343 0626'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

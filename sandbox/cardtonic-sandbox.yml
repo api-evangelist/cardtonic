@@ -1,0 +1,47 @@
+specification: API Commons Sandbox
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: searched
+source: https://docs.cardtonic.com - the X-Tonic-Env parameter and request examples on all 14 published operations
+modified: '2026-09-05'
+description: >-
+  Cardtonic does not publish a sandbox program - no test-key prefix, no test cards, no fixtures, no
+  time simulation, no separate sandbox host. What it does publish is an environment-selector header,
+  X-Tonic-Env, required on every operation, whose only documented value is "development". That is
+  the entire test surface an integrator can see before onboarding.
+sandbox_published: false
+environment_switch:
+  mechanism: request header
+  header: X-Tonic-Env
+  required: true
+  documented_values:
+    - development
+  undocumented:
+    - >-
+      The production value of X-Tonic-Env is never stated in the documentation, even though
+      servers[] is labelled "Prod Env".
+  evidence: 'parameters[] on every operation in openapi/cardtonic-openapi.yml'
+  source: https://docs.cardtonic.com/sign-up-business-user-11716510e0.md
+separate_sandbox_host: false
+host_note: >-
+  A single host is published for both environments - https://api.cardtonic.com/v1. staging.assets.cardtonic.com
+  appears in Cardtonic's own KYC request example as the storage origin for uploaded documents, and
+  answers 403 anonymously; it is an asset bucket, not an API sandbox.
+test_key_prefixes:
+  live: PRIV_
+  test: null
+  note: >-
+    Only one key prefix is published (PRIV_, from the generateApiKey response example). There is no
+    documented test/live key distinction.
+test_cards: []
+test_bank_accounts: []
+test_clocks: false
+fixtures_or_triggers: false
+onboarding: >-
+  Credentials for either environment are issued through the developer waitlist at
+  https://cardtonic.com/developer, not self-service.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

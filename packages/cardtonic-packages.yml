@@ -1,0 +1,53 @@
+specification: API Commons Packages
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: searched
+source: >-
+  registry.npmjs.org search, pypi.org/pypi/cardtonic/json, rubygems.org search, packagist.org search,
+  api.github.com org/user lookups, plus https://cardtonic.com/developer and https://docs.cardtonic.com
+modified: '2026-09-05'
+description: >-
+  Cardtonic publishes no client libraries. Searched 2026-09-05 and found none on any registry, and
+  no first-party GitHub organisation exists to hold one. NO SDKs pointer is wired in apis.yml -
+  this file records a measured absence.
+packages: []
+registries_searched:
+  - registry: npm
+    query: cardtonic
+    endpoint: 'https://registry.npmjs.org/-/v1/search?text=cardtonic'
+    results: 0
+  - registry: pypi
+    query: cardtonic
+    endpoint: https://pypi.org/pypi/cardtonic/json
+    results: 0
+    http_status: 404
+  - registry: rubygems
+    query: cardtonic
+    endpoint: 'https://rubygems.org/api/v1/search.json?query=cardtonic'
+    results: 0
+  - registry: packagist
+    query: cardtonic
+    endpoint: 'https://packagist.org/search.json?q=cardtonic'
+    results: 0
+    note: 'matches returned were unrelated packages (boxpacker, cardmarket-api)'
+source_control:
+  first_party_org: null
+  probed:
+    - url: https://api.github.com/orgs/cardtonic
+      status: 404
+    - url: https://api.github.com/orgs/thetonictech
+      status: 404
+    - url: https://api.github.com/users/cardtonic
+      status: 404
+  note: >-
+    A GitHub code search for "cardtonic" returns 41 repositories, all third-party - personal clones
+    and submissions to Cardtonic's "Upskill" bootcamp (https://cardtonic.com/upskill). None is
+    published by Cardtonic and none is a client library.
+docs_sdk_section: >-
+  Neither https://cardtonic.com/developer nor https://docs.cardtonic.com links to an SDK, a code
+  sample in any language, or a Postman collection.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

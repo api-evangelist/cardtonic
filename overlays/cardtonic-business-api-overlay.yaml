@@ -1,0 +1,102 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements to the Cardtonic Business API
+  version: 1.0.0
+extends: openapi/_original/cardtonic-business-api-openapi.yml
+x-provenance:
+  generated: '2026-09-05'
+  method: generated
+  source: Diff between openapi/_original/cardtonic-business-api-openapi.yml (verbatim harvest from https://docs.cardtonic.com)
+    and openapi/cardtonic-openapi.yml (working copy).
+  note: 'This overlay is the complete and exhaustive record of what API Evangelist added to Cardtonic''s
+    published contract: one info block and fourteen operationIds. No path, parameter, request body, response,
+    example or server was added, removed or altered. Applying this overlay to the _original reproduces
+    the working copy.'
+actions:
+- target: $.info
+  description: 'The harvested contract ships an empty info block (title: "", description: "", version
+    1.0.0). Supply an identity, a contact and terms, all read from Cardtonic first-party pages.'
+  update:
+    title: Cardtonic Business API
+    description: Cardtonic business/developer API. Covers business-account signup and email verification,
+      business login, password recovery, BVN and KYC verification, two-factor authentication, API-key
+      issuance and retrieval, and file upload. Harvested from Cardtonic's own published documentation
+      at https://docs.cardtonic.com; the gift-card catalog, purchase, sale and bulk-order operations advertised
+      on https://cardtonic.com/developer are NOT published in that documentation and are not represented
+      here.
+    version: 1.0.0
+    contact:
+      name: Cardtonic Support
+      email: support@cardtonic.com
+      url: https://cardtonic.com/contact-us
+    termsOfService: https://cardtonic.com/terms
+- target: $.paths['/auth/signup/business'].post
+  description: Add an operationId for POST /auth/signup/business; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: signUpBusinessUser
+- target: $.paths['/auth/verify-email'].patch
+  description: Add an operationId for PATCH /auth/verify-email; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: verifyEmail
+- target: $.paths['/auth/resend-verification-email'].post
+  description: Add an operationId for POST /auth/resend-verification-email; the harvested contract declares
+    none, so no generator or agent can name this operation.
+  update:
+    operationId: resendEmailVerification
+- target: $.paths['/auth/login/business'].post
+  description: Add an operationId for POST /auth/login/business; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: loginBusiness
+- target: $.paths['/auth/forgot-password'].post
+  description: Add an operationId for POST /auth/forgot-password; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: forgotPassword
+- target: $.paths['/auth/reset-password'].post
+  description: Add an operationId for POST /auth/reset-password; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: resetPassword
+- target: $.paths['/users/kyc/verify-bvn'].post
+  description: Add an operationId for POST /users/kyc/verify-bvn; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: addBvn
+- target: $.paths['/users/enable-2fa'].post
+  description: Add an operationId for POST /users/enable-2fa; the harvested contract declares none, so
+    no generator or agent can name this operation.
+  update:
+    operationId: enable2fa
+- target: $.paths['/users/generate-key'].post
+  description: Add an operationId for POST /users/generate-key; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: generateApiKey
+- target: $.paths['/users/show-api-key'].get
+  description: Add an operationId for GET /users/show-api-key; the harvested contract declares none, so
+    no generator or agent can name this operation.
+  update:
+    operationId: fetchApiKey
+- target: $.paths['/users/disable-2fa'].post
+  description: Add an operationId for POST /users/disable-2fa; the harvested contract declares none, so
+    no generator or agent can name this operation.
+  update:
+    operationId: disable2fa
+- target: $.paths['/users/change-password'].patch
+  description: Add an operationId for PATCH /users/change-password; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: changePassword
+- target: $.paths['/users/kyc/verify-kyc'].post
+  description: Add an operationId for POST /users/kyc/verify-kyc; the harvested contract declares none,
+    so no generator or agent can name this operation.
+  update:
+    operationId: verifyKyc
+- target: $.paths['/users/upload'].put
+  description: Add an operationId for PUT /users/upload; the harvested contract declares none, so no generator
+    or agent can name this operation.
+  update:
+    operationId: uploadFile

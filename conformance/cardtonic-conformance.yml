@@ -1,0 +1,117 @@
+specification: API Commons Conformance
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://cardtonic.com/ (footer certification badges), https://cardtonic.com/terms,
+  https://cardtonic.com/privacy, https://cardtonic.com/law-enforcement,
+  https://cardtonic.com/read/we-got-pci-dss-certified, plus derivation from
+  openapi/cardtonic-openapi.yml
+modified: '2026-09-05'
+description: >-
+  Cardtonic holds two published certifications relevant to a payments/fintech regime - PCI DSS and
+  NDPC registration - and states its AML/CFT statutory basis in its Terms. It conforms to no
+  machine-readable API standard: the contract is plain OpenAPI 3.0.1 with a bespoke response
+  envelope, no OAuth, no RFC 9457, and no payments domain standard expressed in the spec.
+conformance:
+  - id: pci-dss
+    conforms: true
+    label: PCI DSS
+    category: regulatory
+    evidence: >-
+      "PCI DSS Certified" badge in the footer of https://cardtonic.com/ (image /webP/pci-dss.webp),
+      corroborated by Cardtonic's own account of the audit at
+      https://cardtonic.com/read/we-got-pci-dss-certified
+    note: >-
+      Certification level, assessor and validity date are not published. Claimed and self-described,
+      not independently verified here.
+  - id: ndpc-registration
+    conforms: true
+    label: Nigeria Data Protection Commission - Data Controller of Major Importance
+    category: regulatory
+    evidence: >-
+      "Cardtonic is duly registered with the Nigeria Data Protection Commission (NDPC) as a Data
+      Controller of Major Importance in line with the Nigeria Data Protection Act, 2023" -
+      https://cardtonic.com/terms ; NDPC badge in the site footer.
+  - id: ghana-data-protection-act
+    conforms: true
+    label: Ghana Data Protection Act, 2012 (Act 843)
+    category: regulatory
+    evidence: 'stated compliance at https://cardtonic.com/terms'
+  - id: aml-cft
+    conforms: true
+    label: AML/CFT statutory framework (NG + GH)
+    category: regulatory
+    evidence: >-
+      Terms name the Money Laundering (Prohibition) Act 2011, the Terrorism (Prevention) Act 2011,
+      the CBN AML/CFT Regulations 2013 and the Ghana Anti-Money Laundering Act 2020 (Act 1044), and
+      state that transaction monitoring and reporting are maintained -
+      https://cardtonic.com/terms
+    api_surface: >-
+      Expressed in the contract as KYC operations: POST /users/kyc/verify-bvn (Central Bank of
+      Nigeria BVN) and POST /users/kyc/verify-kyc (corporate documents + shareholder identity).
+  - id: law-enforcement-rfi-policy
+    conforms: true
+    label: Published law-enforcement request-for-information policy
+    category: regulatory
+    evidence: 'https://cardtonic.com/law-enforcement - formal RFI channel legal@cardtonic.com'
+  - id: openapi
+    conforms: true
+    label: OpenAPI 3.0.1
+    category: contract
+    evidence: 'openapi/cardtonic-openapi.yml, harvested verbatim from https://docs.cardtonic.com'
+  - id: oauth2
+    conforms: false
+    label: OAuth 2.0
+    category: authorization
+    evidence: >-
+      components.securitySchemes is empty in the published contract and
+      /.well-known/oauth-authorization-server returns 404 on every Cardtonic host
+      (well-known/cardtonic-well-known.yml).
+  - id: oidc
+    conforms: false
+    label: OpenID Connect
+    category: authorization
+    evidence: '/.well-known/openid-configuration returns 404 on every Cardtonic host'
+  - id: rfc9457
+    conforms: false
+    label: RFC 9457 Problem Details
+    category: errors
+    evidence: >-
+      All errors are application/json with a bespoke {success, message, meta, errors} envelope -
+      errors/cardtonic-problem-types.yml
+  - id: idempotency
+    conforms: false
+    label: Idempotency keys on mutating operations
+    category: runtime
+    evidence: >-
+      13 of 14 published operations are mutating and none declares an idempotency key -
+      conventions/cardtonic-conventions.yml
+  - id: pagination
+    conforms: false
+    label: Documented pagination
+    category: runtime
+    evidence: 'no collection endpoint is published, so no pagination convention exists'
+domain_standards:
+  regime: payments
+  regime_standards_checked:
+    - pci-dss
+    - 3-d-secure
+    - iso-20022
+    - confirmation-of-payee
+    - emv
+    - psd2-sca
+    - open-payments
+  declared_in_contract: []
+  note: >-
+    REWARD-ONLY check, honestly empty. The published Cardtonic contract is an account-management and
+    KYC surface - it carries no payment message, no card-network primitive and no scheme identifier,
+    so none of the payments-regime standards can be declared by it. PCI DSS is recorded above as a
+    regulatory certification (a program claim), not as a domain standard expressed in the contract.
+    The gift-card purchase, sale and bulk-order operations advertised at
+    https://cardtonic.com/developer are not published anywhere and could not be checked.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

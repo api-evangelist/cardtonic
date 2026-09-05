@@ -1,0 +1,147 @@
+specification: API Commons Conventions
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/cardtonic-openapi.yml (harvested from https://docs.cardtonic.com) plus the Cardtonic
+  developer page at https://cardtonic.com/developer. Cardtonic publishes no prose conventions guide;
+  everything below is read off the contract itself.
+modified: '2026-09-05'
+description: >-
+  Cross-cutting runtime semantics of the Cardtonic Business API. The surface is small (14 operations,
+  all single-resource writes plus one read) and Cardtonic publishes no guide to conventions, so most
+  dimensions below are honest absences rather than choices.
+auth_style:
+  summary: >-
+    Two-stage - session token from POST /auth/login/business, then a PRIV_-prefixed API key from
+    POST /users/generate-key. The header each is presented in is not published.
+  see: authentication/cardtonic-authentication.yml
+environments:
+  mechanism: request header
+  header: X-Tonic-Env
+  required: true
+  published_values:
+    - development
+  note: >-
+    Required on all 14 operations. Cardtonic's own examples only ever show "development"; the
+    production value is not published, and servers[] names a single host
+    (https://api.cardtonic.com/v1) for both. See sandbox/cardtonic-sandbox.yml.
+idempotency:
+  coverage: none
+  scope: []
+  header: null
+  retention: null
+  description: >-
+    No Idempotency-Key header, no client-supplied request identifier, and no replay-safety statement
+    appears anywhere in the contract or the documentation. Of the 14 operations, 13 are mutating
+    (POST/PATCH/PUT) and none of them declares replay protection. A retried signup, KYC submission
+    or key generation has undefined behaviour from the integrator's side.
+  evidence: 'no parameter named /idempoten/i anywhere in openapi/cardtonic-openapi.yml'
+reversibility:
+  grade: documented
+  summary: >-
+    One of the six write surfaces has a published reversal operation and none of them states a
+    window. An agent can undo two-factor enrollment; it cannot undo a KYC submission, an uploaded
+    document, an issued API key, or a created business account.
+  surfaces:
+    - surface: two-factor authentication
+      write: enable2fa
+      reversal: disable2fa
+      reversal_operation_id: disable2fa
+      window: null
+      grade: documented
+      note: >-
+        POST /users/enable-2fa is reversed by POST /users/disable-2fa. Cardtonic states no window or
+        precondition; documented only, not verified.
+      source: https://docs.cardtonic.com/disable-2fa-11716520e0.md
+    - surface: credentials
+      write: generateApiKey
+      reversal: null
+      window: null
+      grade: none
+      note: >-
+        No revoke or rotate operation is published. GET /users/show-api-key reads the key back but
+        cannot invalidate it. A leaked key has no documented remedy short of contacting support.
+    - surface: KYC
+      write: verifyKyc
+      reversal: null
+      window: null
+      grade: none
+      note: >-
+        No withdraw, amend or resubmit operation. POST /users/kyc/verify-bvn is likewise one-way.
+    - surface: file upload
+      write: uploadFile
+      reversal: null
+      window: null
+      grade: none
+      note: PUT /users/upload has no delete counterpart.
+    - surface: account creation
+      write: signUpBusinessUser
+      reversal: null
+      window: null
+      grade: none
+      note: No account close or delete operation is published.
+    - surface: password
+      write: changePassword
+      reversal: null
+      window: null
+      grade: none
+      note: >-
+        forgot-password / reset-password is a recovery flow, not a reversal - it cannot restore the
+        previous credential.
+  no_window_stated: true
+dry_run_mode:
+  supported: false
+  note: >-
+    No preview, simulate or validate-only mode is published on any operation. The X-Tonic-Env header
+    selects an environment, which is not the same thing as rehearsing a call in production.
+pagination:
+  style: none
+  note: >-
+    The published surface has no collection endpoints - GET /users/show-api-key is the only read and
+    it returns a single object. No pagination convention exists to document.
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata:
+  supported: false
+  note: >-
+    Every response carries a top-level "meta" object, but it is a fixed envelope slot
+    ({"settings": null} on success, {} on error), not a customer-writable metadata bag.
+request_id_tracing:
+  supported: false
+  note: No request-id, correlation-id or trace header is declared on any request or response.
+versioning:
+  style: uri-path
+  current: v1
+  evidence: 'servers[0].url = https://api.cardtonic.com/v1'
+  policy_published: false
+  see: lifecycle/cardtonic-lifecycle.yml
+error_envelope:
+  format: custom-json
+  shape: '{success: boolean, message: string, meta: object, errors: array}'
+  rfc9457: false
+  see: errors/cardtonic-problem-types.yml
+success_envelope:
+  shape: '{message: string, success: boolean, data: object|array, meta: {settings: null}}'
+  note: >-
+    Consistent across all 14 operations - the one convention Cardtonic applies uniformly. Payload is
+    always nested under "data"; clients must unwrap.
+rate_limit_signaling:
+  headers_published: []
+  status_on_exhaustion: null
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header is declared on any response, and no 429 is
+    documented. See rate-limits/cardtonic-rate-limits.yml.
+cross_links:
+  errors: errors/cardtonic-problem-types.yml
+  lifecycle: lifecycle/cardtonic-lifecycle.yml
+  authentication: authentication/cardtonic-authentication.yml
+  rate_limits: rate-limits/cardtonic-rate-limits.yml
+  sandbox: sandbox/cardtonic-sandbox.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -6,8 +6,8 @@ providerId: cardtonic
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+method: searched
+modified: '2026-09-05'
 reconciled: false
 tags:
   - Fintech
@@ -16,9 +16,25 @@ tags:
   - Rate Limiting
 description: Cardtonic does not publish API rate limits. The Gift Card Developer API is waitlist-only
   and rate parameters are set per merchant at onboarding.
-notes: No public rate-limit documentation found. Treat all caps as merchant-contract-defined.
+notes: >-
+  Re-searched 2026-09-05 against Cardtonic's published API documentation, which did not exist the
+  last time this file was written. The finding is unchanged and now evidenced against the contract
+  itself: none of the 14 published operations declares a 429 response, and no X-RateLimit-*,
+  RateLimit-* or Retry-After header appears anywhere in openapi/cardtonic-openapi.yml. The 429
+  recorded under responseCodes below is the HTTP convention, NOT a Cardtonic-documented status -
+  Cardtonic documents no exhaustion behaviour at all.
+limit_count: 0
+headers_published: []
+status_on_exhaustion: null
 sources:
-  - https://www.cardtonic.com/
+  - url: https://docs.cardtonic.com
+    status: 200
+    note: 14 operations; no 429, no rate-limit header on any response
+  - url: https://cardtonic.com/developer
+    status: 200
+    note: no limits published
+  - url: https://www.cardtonic.com/
+    status: 200
 responseCodes:
   throttled: 429
 limits:

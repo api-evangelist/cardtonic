@@ -1,0 +1,95 @@
+specification: API Commons Error Catalog
+specificationVersion: '0.1'
+provider: Cardtonic
+providerId: cardtonic
+generated: '2026-09-05'
+method: derived
+source: 4xx responses declared in openapi/cardtonic-openapi.yml (harvested from https://docs.cardtonic.com)
+modified: '2026-09-05'
+format: custom-json
+rfc9457: false
+description: >-
+  Cardtonic does not use RFC 9457 problem+json. Every documented error is application/json with a
+  flat four-key envelope. There is no machine-readable error code field - the only discriminator an
+  integrator gets is the HTTP status plus a human-readable message string, and for 422 a per-field
+  validation array.
+envelope:
+  content_type: application/json
+  fields:
+    - name: success
+      type: boolean
+      note: false on every error response
+    - name: message
+      type: string
+      note: human-readable; the only error discriminator on 400 and 403
+    - name: meta
+      type: object
+      note: empty object on every documented error
+    - name: errors
+      type: array
+      note: >-
+        array of strings on 400/403; array of {message, field, location} objects on 422
+  example:
+    success: false
+    message: "you're yet to verify your email, please check your mail for verification link."
+    meta: {}
+    errors: []
+error_codes_published: false
+problem_types:
+  - status: 400
+    title: Bad request
+    format: custom-json
+    operations:
+      - verifyEmail
+      - resetPassword
+    description: >-
+      Returned when a supplied token is invalid or expired. errors[] is an array of strings.
+    remediation: >-
+      Re-request the token (resendEmailVerification for signup, forgotPassword for reset) and retry.
+    evidence: "responses['400'] of verifyEmail and resetPassword"
+  - status: 403
+    title: Forbidden - account state
+    format: custom-json
+    operations:
+      - loginBusiness
+      - signUpBusinessUser
+      - resendEmailVerification
+    description: >-
+      Returned when the account exists but is not in a usable state - most commonly an unverified
+      email. Cardtonic's own example message is "you're yet to verify your email, please check your
+      mail for verification link." errors[] is an empty array.
+    remediation: >-
+      Call POST /auth/resend-verification-email, complete verification, then retry the login.
+    evidence: "responses['403'] of loginBusiness"
+  - status: 422
+    title: Unprocessable entity - field validation
+    format: custom-json
+    operations:
+      - signUpBusinessUser
+      - verifyEmail
+      - loginBusiness
+      - resetPassword
+      - changePassword
+    description: >-
+      Request-body validation failure. errors[] carries one object per offending field with
+      {message, field, location} - the only structured error detail Cardtonic publishes.
+    remediation: >-
+      Read errors[].field and errors[].location to locate the offending value; correct and retry.
+      Safe to retry - no state is created on a 422.
+    example:
+      success: false
+      message: validation error
+      meta: {}
+      errors:
+        - message: provide the token
+          field: token
+          location: body
+    evidence: "responses['422'] of verifyEmail"
+gaps:
+  - No 401 response is documented on any operation, despite the API issuing session tokens and API keys.
+  - No 429 response is documented; see rate-limits/cardtonic-rate-limits.yml.
+  - No 5xx responses are documented on any operation.
+  - No stable machine-readable error code or type URI exists - integrators must string-match on message.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

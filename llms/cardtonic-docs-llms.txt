@@ -1,0 +1,30 @@
+# Cardtonic Doc
+
+## Docs
+- [🐶 Walk through Apidog](https://docs.cardtonic.com/-walk-through-apidog-745107m0.md): 
+
+## API Docs
+- Sample APIs [Find pet by ID](https://docs.cardtonic.com/find-pet-by-id-11711686e0.md): 
+- Sample APIs [Add a new pet to the store](https://docs.cardtonic.com/add-a-new-pet-to-the-store-11711687e0.md): 
+- Sample APIs [Update an existing pet](https://docs.cardtonic.com/update-an-existing-pet-11711688e0.md): 
+- Sample APIs [Deletes a pet](https://docs.cardtonic.com/deletes-a-pet-11711689e0.md): 
+- Sample APIs [Finds Pets by status](https://docs.cardtonic.com/finds-pets-by-status-11711690e0.md): 
+- Auth [SIGN UP BUSINESS USER](https://docs.cardtonic.com/sign-up-business-user-11716510e0.md): 
+- Auth [VERIFY EMAIL](https://docs.cardtonic.com/verify-email-11716511e0.md): 
+- Auth [RESEND EMAIL VERIFICATION](https://docs.cardtonic.com/resend-email-verification-11716512e0.md): 
+- Auth [LOGIN BUSINESS](https://docs.cardtonic.com/login-business-11716513e0.md): 
+- Auth [FORGOT PASSWORD](https://docs.cardtonic.com/forgot-password-11716514e0.md): 
+- Auth [RESET PASSWORD](https://docs.cardtonic.com/reset-password-11716515e0.md): 
+- User [Add BVN](https://docs.cardtonic.com/add-bvn-11716516e0.md): 
+- User [ENABLE 2FA](https://docs.cardtonic.com/enable-2fa-11716517e0.md): 
+- User [GENERATE API KEY](https://docs.cardtonic.com/generate-api-key-11716518e0.md): 
+- User [FETCH API KEY](https://docs.cardtonic.com/fetch-api-key-11716519e0.md): 
+- User [DISABLE 2FA](https://docs.cardtonic.com/disable-2fa-11716520e0.md): 
+- User [CHANGE PASSWORD](https://docs.cardtonic.com/change-password-11716521e0.md): 
+- User [Verify KYC](https://docs.cardtonic.com/verify-kyc-11716522e0.md): 
+- User [Upload File](https://docs.cardtonic.com/upload-file-11716523e0.md): 
+
+## Schemas
+- Sample Schemas [Pet](https://docs.cardtonic.com/pet-4168524d0.md): 
+- Sample Schemas [Category](https://docs.cardtonic.com/category-4168525d0.md): 
+- Sample Schemas [Tag](https://docs.cardtonic.com/tag-4168526d0.md): 

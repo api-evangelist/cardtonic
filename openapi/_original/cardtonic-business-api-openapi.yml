@@ -1,35 +1,11 @@
-# method: searched
-# source: https://docs.cardtonic.com - the 14 per-operation OpenAPI 3.0.1 fragments Cardtonic publishes at <operation>.md
+# Harvested 2026-09-05 from Cardtonic's own published API documentation at
+# https://docs.cardtonic.com (Apidog-hosted). Each operation page publishes a complete
+# OpenAPI 3.0.1 YAML fragment at <page>.md; this file is the verbatim union of the 14
+# Cardtonic operation fragments. The 5 Petstore 'Sample APIs' operations left in the
+# Apidog project by default were EXCLUDED - they are Apidog's demo content, not Cardtonic's.
+# Nothing below was authored by API Evangelist.
 openapi: 3.0.1
-info:
-  title: Cardtonic Business API
-  description: Cardtonic business/developer API. Covers business-account signup and email verification,
-    business login, password recovery, BVN and KYC verification, two-factor authentication, API-key issuance
-    and retrieval, and file upload. Harvested from Cardtonic's own published documentation at https://docs.cardtonic.com;
-    the gift-card catalog, purchase, sale and bulk-order operations advertised on https://cardtonic.com/developer
-    are NOT published in that documentation and are not represented here.
-  version: 1.0.0
-  contact:
-    name: Cardtonic Support
-    email: support@cardtonic.com
-    url: https://cardtonic.com/contact-us
-  termsOfService: https://cardtonic.com/terms
-x-provenance:
-  method: searched
-  generated: '2026-09-05'
-  source: https://docs.cardtonic.com/llms.txt + the 14 per-operation OpenAPI fragments published at https://docs.cardtonic.com/<operation>.md
-  note: 'Operations, parameters, request bodies, responses and servers[] are VERBATIM from Cardtonic''s
-    own Apidog-published OpenAPI fragments (see openapi/_original/). API Evangelist added only: info.title,
-    info.description, info.contact, info.termsOfService (the source info block was empty) and one operationId
-    per operation (the source declares none). Those additions are also recorded in overlays/cardtonic-business-api-overlay.yaml.'
-  ownership: servers[] declares https://api.cardtonic.com/v1 - Cardtonic's own API host - on all 14 fragments;
-    request headers are X-Tonic-Env and example asset URLs are on staging.assets.cardtonic.com, both first-party
-    to Cardtonic (The Tonic Technologies).
-  excluded: The Apidog project also carries 5 default Petstore 'Sample APIs' operations (/pet, /pet/{petId},
-    /pet/findByStatus). They are Apidog demo content, not a Cardtonic surface, and were deliberately excluded.
-  liveness: api.cardtonic.com resolves (Cloudflare) but returns a Go '404 page not found' on / , /v1 and
-    on the documented paths anonymously as of 2026-09-05; credentials are issued through the waitlist
-    at https://cardtonic.com/developer.
+info: {}
 servers:
 - url: https://api.cardtonic.com/v1
   description: Prod Env
@@ -288,7 +264,6 @@ paths:
       x-apidog-folder: Auth
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716510-run
-      operationId: signUpBusinessUser
   /auth/verify-email:
     patch:
       summary: VERIFY EMAIL
@@ -486,7 +461,6 @@ paths:
       x-apidog-folder: Auth
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716511-run
-      operationId: verifyEmail
   /auth/resend-verification-email:
     post:
       summary: RESEND EMAIL VERIFICATION
@@ -610,7 +584,6 @@ paths:
       x-apidog-folder: Auth
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716512-run
-      operationId: resendEmailVerification
   /auth/login/business:
     post:
       summary: LOGIN BUSINESS
@@ -750,7 +723,6 @@ paths:
       x-apidog-folder: Auth
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716513-run
-      operationId: loginBusiness
   /auth/forgot-password:
     post:
       summary: FORGOT PASSWORD
@@ -840,7 +812,6 @@ paths:
       x-apidog-folder: Auth
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716514-run
-      operationId: forgotPassword
   /auth/reset-password:
     post:
       summary: RESET PASSWORD
@@ -1042,7 +1013,6 @@ paths:
       x-apidog-folder: Auth
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716515-run
-      operationId: resetPassword
   /users/kyc/verify-bvn:
     post:
       summary: Add BVN
@@ -1119,7 +1089,6 @@ paths:
       x-apidog-folder: User
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716516-run
-      operationId: addBvn
   /users/enable-2fa:
     post:
       summary: ENABLE 2FA
@@ -1188,7 +1157,6 @@ paths:
       x-apidog-folder: User
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716517-run
-      operationId: enable2fa
   /users/generate-key:
     post:
       summary: GENERATE API KEY
@@ -1263,7 +1231,6 @@ paths:
       x-apidog-folder: User
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716518-run
-      operationId: generateApiKey
   /users/show-api-key:
     get:
       summary: FETCH API KEY
@@ -1338,7 +1305,6 @@ paths:
       x-apidog-folder: User
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716519-run
-      operationId: fetchApiKey
   /users/disable-2fa:
     post:
       summary: DISABLE 2FA
@@ -1407,7 +1373,6 @@ paths:
       x-apidog-folder: User
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716520-run
-      operationId: disable2fa
   /users/change-password:
     patch:
       summary: CHANGE PASSWORD
@@ -1587,7 +1552,6 @@ paths:
       x-apidog-folder: User
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716521-run
-      operationId: changePassword
   /users/kyc/verify-kyc:
     post:
       summary: Verify KYC
@@ -1696,7 +1660,6 @@ paths:
       x-apidog-folder: User
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716522-run
-      operationId: verifyKyc
   /users/upload:
     put:
       summary: Upload File
@@ -1803,7 +1766,6 @@ paths:
       x-apidog-folder: User
       x-apidog-status: released
       x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716523-run
-      operationId: uploadFile
 components:
   schemas: {}
   securitySchemes: {}
