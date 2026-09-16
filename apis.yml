@@ -60,162 +60,147 @@ created: '2025-02-08'
 modified: '2026-09-05'
 specificationVersion: '0.23'
 apis:
-  - aid: cardtonic:gift-card-developer-api
-    name: Cardtonic Gift Card Developer API
-    description: >-
-      The Cardtonic Gift Card Developer API enables merchants and
-      platforms to integrate gift card services into their websites,
-      mobile apps, and point-of-sale systems. The API exposes a
-      catalog of more than 14,000 gift cards for purchase and sale,
-      bulk ordering with instant reporting, inventory and redemption
-      management, and branding/customization hooks. As of 2026 the
-      API is in waitlist mode and developer credentials are issued
-      through Cardtonic on request.
-    humanURL: https://cardtonic.com/developer
-    tags:
-      - Gift Cards
-      - Fintech
-      - Payments
-    properties:
-      - url: https://cardtonic.com/developer
-        type: Documentation
-      - url: https://cardtonic.com/developer
-        type: SignUp
-    x-features:
-      - Catalog of 14,000+ local and international gift cards
-      - Purchase and sale flows for merchant integration
-      - Bulk ordering with instant reporting
-      - Inventory and redemption management
-      - Branding/white-label customization hooks
-      - Web, mobile, and POS integration patterns
-      - Waitlist-based onboarding
-    x-use-cases:
-      - Rewards and employee recognition platforms
-      - Remittance and cross-border cash-out flows
-      - Neobank and wallet gift card storefronts
-      - Retail POS gift card upsell and resale
-      - Loyalty and referral programs
-      - Corporate procurement and bulk gifting
-  - aid: cardtonic:virtual-dollar-card
-    name: Cardtonic Virtual Dollar Card
-    description: >-
-      Cardtonic Virtual Dollar Cards are user-facing USD-denominated
-      cards that let African customers pay merchants that accept
-      Visa/Mastercard globally. The product is currently consumed
-      through the Cardtonic app and dashboard; programmatic access
-      for partners is available on request alongside the Gift Card
-      Developer API waitlist.
-    humanURL: https://cardtonic.com/virtual-dollar-card
-    tags:
-      - Cards
-      - Fintech
-      - Virtual Dollar Cards
-    properties:
-      - url: https://cardtonic.com/virtual-dollar-card
-        type: Documentation
-    x-features:
-      - USD-denominated virtual cards for online spending
-      - Load and settle in Naira/Cedis
-      - App and dashboard controls for issuance and spend
-      - PCI DSS certified issuance
-    x-use-cases:
-      - Cross-border subscription payments (SaaS, streaming)
-      - Online shopping on global merchants
-      - Travel and ad-platform spend for SMBs
-      - Remote worker payouts
-  - aid: cardtonic:bill-payments
-    name: Cardtonic Bill Payments
-    description: >-
-      Cardtonic Bill Payments cover airtime top-ups, mobile data,
-      electricity, TV subscriptions, and betting wallets across more
-      than 100 countries, consumed through the Cardtonic app and
-      dashboard. Partner access is available on request.
-    humanURL: https://cardtonic.com/
-    tags:
-      - Bill Payments
-      - Fintech
-      - Payments
-    properties:
-      - url: https://cardtonic.com/
-        type: Documentation
-    x-features:
-      - Airtime and mobile data top-ups
-      - Electricity and TV subscription payments
-      - Betting wallet funding
-      - 100+ country coverage
-      - App, web, and dashboard channels
-    x-use-cases:
-      - Consumer bill-payment super-app scenarios
-      - Diaspora bill pay for family members
-      - Agent-banking and mobile-money integrations
-  - aid: cardtonic:business-api
-    name: Cardtonic Business API
-    description: >-
-      The Cardtonic Business API is the account, credential and compliance layer
-      of Cardtonic's developer program, and the only Cardtonic surface with a
-      published machine-readable contract. It covers business-account signup and
-      email verification, business login, password recovery and change,
-      two-factor enrollment, Nigerian BVN and corporate KYC submission, file
-      upload, and issuance and retrieval of the PRIV_-prefixed API key a merchant
-      integration authenticates with. Cardtonic publishes it as OpenAPI 3.0.1
-      through an Apidog-hosted documentation site at docs.cardtonic.com; the
-      gift-card catalog, purchase, sale and bulk-order operations advertised on
-      the developer page are NOT part of it and have no published contract.
-    humanURL: https://docs.cardtonic.com
-    baseURL: https://api.cardtonic.com/v1
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cardtonic.png
-    tags:
-      - Fintech
-      - Payments
-      - Authentication
-      - KYC
-      - Nigeria
-    properties:
-      - url: openapi/cardtonic-openapi.yml
-        type: OpenAPI
-      - url: overlays/cardtonic-business-api-overlay.yaml
-        type: Overlay
-      - url: authentication/cardtonic-authentication.yml
-        type: Authentication
-      - url: conventions/cardtonic-conventions.yml
-        type: Conventions
-      - url: errors/cardtonic-problem-types.yml
-        type: ErrorCatalog
-      - url: data-model/cardtonic-data-model.yml
-        type: DataModel
-      - url: sandbox/cardtonic-sandbox.yml
-        type: Sandbox
-      - url: mcp/cardtonic-mcp.yml
-        type: MCPServer
-      - url: skills/_index.yml
-        type: AgentSkill
-      - url: https://docs.cardtonic.com
-        type: APIReference
-      - url: https://docs.cardtonic.com
-        type: Documentation
-      - url: https://cardtonic.com/developer
-        type: SignUp
-    x-features:
-      - Business-account signup with an embedded merchant profile
-      - Email verification and re-send
-      - Session-token login, KYC-gated
-      - Password recovery and change
-      - Two-factor enable/disable
-      - Nigerian BVN submission (Central Bank of Nigeria identifier)
-      - Corporate KYC with shareholder records and document upload
-      - PRIV_-prefixed API key issuance and retrieval
-    x-use-cases:
-      - Onboarding a merchant onto the Cardtonic developer program
-      - Automating business KYC document submission
-      - Provisioning and reading integration credentials
-    x-gaps:
-      - No securityScheme is declared; the header the token or API key is sent in is not published.
-      - No revoke or rotate operation for an issued API key.
-      - No 401, 429 or 5xx response is documented on any operation.
-      - >-
-        api.cardtonic.com answered "404 page not found" on the documented paths to an anonymous
-        caller on 2026-09-05; credentials are issued through the waitlist.
+- aid: cardtonic:gift-card-developer-api
+  name: Cardtonic Gift Card Developer API
+  description: >-
+    The Cardtonic Gift Card Developer API enables merchants and platforms to integrate gift card services
+    into their websites, mobile apps, and point-of-sale systems. The API exposes a catalog of more than
+    14,000 gift cards for purchase and sale, bulk ordering with instant reporting, inventory and redemption
+    management, and branding/customization hooks. As of 2026 the API is in waitlist mode and developer
+    credentials are issued through Cardtonic on request.
+  humanURL: https://cardtonic.com/developer
+  tags:
+  - Gift Cards
+  - Fintech
+  - Payments
+  properties:
+  - url: https://cardtonic.com/developer
+    type: Documentation
+  - url: https://cardtonic.com/developer
+    type: SignUp
+  x-features:
+  - Catalog of 14,000+ local and international gift cards
+  - Purchase and sale flows for merchant integration
+  - Bulk ordering with instant reporting
+  - Inventory and redemption management
+  - Branding/white-label customization hooks
+  - Web, mobile, and POS integration patterns
+  - Waitlist-based onboarding
+  x-use-cases:
+  - Rewards and employee recognition platforms
+  - Remittance and cross-border cash-out flows
+  - Neobank and wallet gift card storefronts
+  - Retail POS gift card upsell and resale
+  - Loyalty and referral programs
+  - Corporate procurement and bulk gifting
+- aid: cardtonic:virtual-dollar-card
+  name: Cardtonic Virtual Dollar Card
+  description: >-
+    Cardtonic Virtual Dollar Cards are user-facing USD-denominated cards that let African customers pay
+    merchants that accept Visa/Mastercard globally. The product is currently consumed through the Cardtonic
+    app and dashboard; programmatic access for partners is available on request alongside the Gift Card
+    Developer API waitlist.
+  humanURL: https://cardtonic.com/virtual-dollar-card
+  tags:
+  - Cards
+  - Fintech
+  - Virtual Dollar Cards
+  properties:
+  - url: https://cardtonic.com/virtual-dollar-card
+    type: Documentation
+  x-features:
+  - USD-denominated virtual cards for online spending
+  - Load and settle in Naira/Cedis
+  - App and dashboard controls for issuance and spend
+  - PCI DSS certified issuance
+  x-use-cases:
+  - Cross-border subscription payments (SaaS, streaming)
+  - Online shopping on global merchants
+  - Travel and ad-platform spend for SMBs
+  - Remote worker payouts
+- aid: cardtonic:bill-payments
+  name: Cardtonic Bill Payments
+  description: >-
+    Cardtonic Bill Payments cover airtime top-ups, mobile data, electricity, TV subscriptions, and betting
+    wallets across more than 100 countries, consumed through the Cardtonic app and dashboard. Partner
+    access is available on request.
+  humanURL: https://cardtonic.com/
+  tags:
+  - Bill Payments
+  - Fintech
+  - Payments
+  properties:
+  - url: https://cardtonic.com/
+    type: Documentation
+  x-features:
+  - Airtime and mobile data top-ups
+  - Electricity and TV subscription payments
+  - Betting wallet funding
+  - 100+ country coverage
+  - App, web, and dashboard channels
+  x-use-cases:
+  - Consumer bill-payment super-app scenarios
+  - Diaspora bill pay for family members
+  - Agent-banking and mobile-money integrations
+- aid: cardtonic:cardtonic-auth-api
+  name: Cardtonic Auth API
+  description: The Auth API from Cardtonic — 6 operation(s) for auth.
+  humanURL: https://cardtonic.com/developer
+  baseURL: https://api.cardtonic.com/v1
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/cardtonic-auth-api-openapi.yml
+  - type: Authentication
+    url: authentication/cardtonic-authentication.yml
+  - type: Conventions
+    url: conventions/cardtonic-conventions.yml
+  - type: ErrorCatalog
+    url: errors/cardtonic-problem-types.yml
+  - type: DataModel
+    url: data-model/cardtonic-data-model.yml
+  - type: Sandbox
+    url: sandbox/cardtonic-sandbox.yml
+  - type: APIReference
+    url: https://docs.cardtonic.com
+  - type: Documentation
+    url: https://docs.cardtonic.com
+  - type: SignUp
+    url: https://cardtonic.com/developer
+- aid: cardtonic:cardtonic-user-api
+  name: Cardtonic User API
+  description: The User API from Cardtonic — 8 operation(s) for user.
+  humanURL: https://cardtonic.com/developer
+  baseURL: https://api.cardtonic.com/v1
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/cardtonic-user-api-openapi.yml
+  - type: Authentication
+    url: authentication/cardtonic-authentication.yml
+  - type: Conventions
+    url: conventions/cardtonic-conventions.yml
+  - type: ErrorCatalog
+    url: errors/cardtonic-problem-types.yml
+  - type: DataModel
+    url: data-model/cardtonic-data-model.yml
+  - type: Sandbox
+    url: sandbox/cardtonic-sandbox.yml
+  - type: APIReference
+    url: https://docs.cardtonic.com
+  - type: Documentation
+    url: https://docs.cardtonic.com
+  - type: SignUp
+    url: https://cardtonic.com/developer
 common:
+  - type: Overlay
+    url: overlays/cardtonic-business-api-overlay.yaml
+  - type: MCPServer
+    url: mcp/cardtonic-mcp.yml
+  - type: AgentSkill
+    url: skills/_index.yml
   - type: Website
     url: https://cardtonic.com/
   - type: Developer
