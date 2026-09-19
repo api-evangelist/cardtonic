@@ -148,6 +148,8 @@ apis:
   humanURL: https://cardtonic.com/developer
   baseURL: https://api.cardtonic.com/v1
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
