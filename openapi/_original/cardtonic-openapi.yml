@@ -1,3 +1,5 @@
+# x-archived-from: cardtonic-openapi.yml
+# x-archived-on: 2026-09-16
 # method: searched
 # source: https://docs.cardtonic.com - the 14 per-operation OpenAPI 3.0.1 fragments Cardtonic publishes at <operation>.md
 openapi: 3.0.1

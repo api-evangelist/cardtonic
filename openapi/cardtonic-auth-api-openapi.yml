@@ -1,0 +1,1021 @@
+openapi: 3.2.0
+info:
+  title: Cardtonic Auth API
+servers:
+- url: https://api.cardtonic.com/v1
+  description: Prod Env
+tags:
+- name: Auth
+paths:
+  /auth/signup/business:
+    post:
+      summary: SIGN UP BUSINESS USER
+      deprecated: false
+      description: ''
+      tags:
+      - Auth
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                password:
+                  type: string
+                phoneNumber:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                country:
+                  type: string
+                business:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    website:
+                      type: string
+                    description:
+                      type: string
+                  required:
+                  - name
+                  - website
+                  - description
+                  x-apidog-orders:
+                  - name
+                  - website
+                  - description
+              required:
+              - name
+              - password
+              - phoneNumber
+              - username
+              - email
+              - country
+              - business
+              x-apidog-orders:
+              - name
+              - password
+              - phoneNumber
+              - username
+              - email
+              - country
+              - business
+            example:
+              name: Akinbiyi Fatunmbi
+              password: Computer7,
+              phoneNumber: '+2347038784406'
+              username: akinpiers
+              email: akinbiyi@thetonictech.com
+              country: Nigeria
+              business:
+                name: Akinpiers's Business
+                website: https://thetonictech.com
+                description: About this business
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phoneNumber:
+                        type: string
+                      username:
+                        type: string
+                      business:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          website:
+                            type: string
+                          description:
+                            type: string
+                        required:
+                        - name
+                        - website
+                        - description
+                        x-apidog-orders:
+                        - name
+                        - website
+                        - description
+                    required:
+                    - name
+                    - email
+                    - phoneNumber
+                    - username
+                    - business
+                    x-apidog-orders:
+                    - name
+                    - email
+                    - phoneNumber
+                    - username
+                    - business
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: data fetched
+                success: true
+                data:
+                  name: Michael George
+                  email: george@thetonictech.com
+                  phoneNumber: '2348000000000'
+                  username: michaelgeorge_1730672802298
+                  business:
+                    name: Mikkycody's Business
+                    website: https://thetonictech.com
+                    description: About this business
+                meta:
+                  settings: {}
+          headers: {}
+          x-apidog-name: 201 SIGN UP BUSINESS USER
+        '422':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        field:
+                          type: string
+                        location:
+                          type: string
+                      required:
+                      - message
+                      - field
+                      - location
+                      x-apidog-orders:
+                      - message
+                      - field
+                      - location
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: validation errors
+                meta:
+                  settings: {}
+                errors:
+                - message: password must contain 8 characters and at least 1 number, 1 uppercase, and 1 lowercase letter
+                  field: password
+                  location: body
+                - message: phone number must be correct nigerian number
+                  field: phoneNumber
+                  location: body
+                - message: name cannot be empty
+                  field: name
+                  location: body
+                - message: business must be an object
+                  field: business
+                  location: body
+                - message: business object cannot be empty
+                  field: business
+                  location: body
+                - message: Business must be an object
+                  field: business
+                  location: body
+                - message: must be valid email
+                  field: email
+                  location: body
+                - message: must be valid email
+                  field: email
+                  location: body
+          headers: {}
+          x-apidog-name: 422 SIGN UP BUSINESS USER
+      security: []
+      x-apidog-folder: Auth
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716510-run
+      operationId: postAuthSignupBusiness
+      x-operation-id-source: derived
+  /auth/verify-email:
+    patch:
+      summary: VERIFY EMAIL
+      deprecated: false
+      description: ''
+      tags:
+      - Auth
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                otp:
+                  type: string
+              required:
+              - token
+              - otp
+              x-apidog-orders:
+              - token
+              - otp
+            example:
+              token: I46xcijA9RBNP35xxt5ol
+              otp: '3271'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: email verified, welcome to Cardtonic, please login to continue
+                success: true
+                data: {}
+                meta:
+                  settings: {}
+          headers: {}
+          x-apidog-name: 200 VERIFY EMAIL
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      email:
+                        type: 'null'
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - email
+                    - settings
+                    x-apidog-orders:
+                    - email
+                    - settings
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: you entered an incorrect code, or the verification link has expired
+                meta:
+                  email: null
+                  settings: {}
+                errors: []
+          headers: {}
+          x-apidog-name: 400 VERIFY EMAIL
+        '422':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        field:
+                          type: string
+                        location:
+                          type: string
+                      required:
+                      - message
+                      - field
+                      - location
+                      x-apidog-orders:
+                      - message
+                      - field
+                      - location
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: validation errors
+                meta:
+                  settings: {}
+                errors:
+                - message: provide the token
+                  field: token
+                  location: body
+                - message: provide the otp
+                  field: otp
+                  location: body
+          headers: {}
+          x-apidog-name: 422 VERIFY EMAIL
+      security: []
+      x-apidog-folder: Auth
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716511-run
+      operationId: patchAuthVerifyEmail
+      x-operation-id-source: derived
+  /auth/resend-verification-email:
+    post:
+      summary: RESEND EMAIL VERIFICATION
+      deprecated: false
+      description: ''
+      tags:
+      - Auth
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+              - email
+              x-apidog-orders:
+              - email
+            example:
+              email: george@thetonictech.com
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                      email:
+                        type: string
+                    required:
+                    - token
+                    - email
+                    x-apidog-orders:
+                    - token
+                    - email
+                  meta:
+                    type: 'null'
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: a new email verification link has been sent to your mail
+                success: true
+                data:
+                  token: Mil-IM1fo5cWdvlJZq2p0
+                  email: george@thetonictech.com
+                meta: null
+          headers: {}
+          x-apidog-name: 200 RESEND EMAIL VERIFICATION
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: your email is verified, please sign in to continue to your dashboard
+                meta:
+                  settings: {}
+                errors: []
+          headers: {}
+          x-apidog-name: 403 RESEND EMAIL VERIFICATION
+      security: []
+      x-apidog-folder: Auth
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716512-run
+      operationId: postAuthResendVerificationEmail
+      x-operation-id-source: derived
+  /auth/login/business:
+    post:
+      summary: LOGIN BUSINESS
+      deprecated: false
+      description: ''
+      tags:
+      - Auth
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                email:
+                  type: string
+              required:
+              - password
+              - email
+              x-apidog-orders:
+              - password
+              - email
+            example:
+              password: Password1#,
+              email: george@thetonictech.com
+      responses:
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: you're yet to verify your email, please check your mail for verification link.
+                meta: {}
+                errors: []
+          headers: {}
+          x-apidog-name: 403 LOGIN BUSINESS
+        '422':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        field:
+                          type: string
+                        location:
+                          type: string
+                      required:
+                      - message
+                      - field
+                      - location
+                      x-apidog-orders:
+                      - message
+                      - field
+                      - location
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: validation errors
+                meta: {}
+                errors:
+                - message: password must contain 8 characters and at least 1 number, 1 uppercase, and 1 lowercase letter
+                  field: password
+                  location: body
+                - message: you should provide your username or email
+                  field: ''
+                  location: body
+                - message: must be valid email
+                  field: email
+                  location: body
+                - message: must be valid email
+                  field: email
+                  location: body
+          headers: {}
+          x-apidog-name: 422 LOGIN BUSINESS
+      security: []
+      x-apidog-folder: Auth
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716513-run
+      operationId: postAuthLoginBusiness
+      x-operation-id-source: derived
+  /auth/forgot-password:
+    post:
+      summary: FORGOT PASSWORD
+      deprecated: false
+      description: ''
+      tags:
+      - Auth
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+              - email
+              x-apidog-orders:
+              - email
+            example:
+              email: george@thetonictech.com
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                      username:
+                        type: string
+                    required:
+                    - token
+                    - username
+                    x-apidog-orders:
+                    - token
+                    - username
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: otp has been sent to 'george@thetonictech.com
+                success: true
+                data:
+                  token: 30c504889e7325179003880bfd096303ec3b13c877a33b2f016e9a1b16d6f79b5338ad4870f38dec99c718ea298e9a3e3746a5a7376a1e8d4d196b5ce0fbbe63
+                  username: michaelgeorge_1730672802298
+                meta:
+                  settings: {}
+          headers: {}
+          x-apidog-name: 200 FORGOT PASSWORD
+      security: []
+      x-apidog-folder: Auth
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716514-run
+      operationId: postAuthForgotPassword
+      x-operation-id-source: derived
+  /auth/reset-password:
+    post:
+      summary: RESET PASSWORD
+      deprecated: false
+      description: ''
+      tags:
+      - Auth
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                otp:
+                  type: string
+                token:
+                  type: string
+                password:
+                  type: string
+              required:
+              - otp
+              - token
+              - password
+              x-apidog-orders:
+              - otp
+              - token
+              - password
+            example:
+              otp: '8179'
+              token: 433ccf537425e1f4064244bb9852b317f46886b163624aebe37e5680a02761f63caaeced7252c43724de070270e9f43a0be4cd81dbd3c91bc7b1fbd7fb38eb08
+              password: Password1#
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: password successfully changed, please login to continue to your dashboard
+                success: true
+                data: {}
+                meta:
+                  settings: {}
+          headers: {}
+          x-apidog-name: 200 RESET PASSWORD
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: incorrect and/or expired otp, please request a new password reset otp
+                meta:
+                  settings: {}
+                errors: []
+          headers: {}
+          x-apidog-name: 400 RESET PASSWORD
+        '422':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: object
+                        properties: {}
+                        x-apidog-orders: []
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        field:
+                          type: string
+                        location:
+                          type: string
+                      required:
+                      - message
+                      - field
+                      - location
+                      x-apidog-orders:
+                      - message
+                      - field
+                      - location
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: validation errors
+                meta:
+                  settings: {}
+                errors:
+                - message: password must contain 8 characters and at least 1 number, 1 uppercase, and 1 lowercase letter
+                  field: password
+                  location: body
+                - message: provide the token
+                  field: token
+                  location: body
+                - message: provide the otp
+                  field: otp
+                  location: body
+          headers: {}
+          x-apidog-name: 422 RESET PASSWORD
+      security: []
+      x-apidog-folder: Auth
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716515-run
+      operationId: postAuthResetPassword
+      x-operation-id-source: derived

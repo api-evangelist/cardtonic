@@ -1,0 +1,778 @@
+openapi: 3.2.0
+info:
+  title: Cardtonic User API
+servers:
+- url: https://api.cardtonic.com/v1
+  description: Prod Env
+tags:
+- name: User
+paths:
+  /users/kyc/verify-bvn:
+    post:
+      summary: Add BVN
+      deprecated: false
+      description: ''
+      tags:
+      - User
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bvn:
+                  type: string
+              required:
+              - bvn
+              x-apidog-orders:
+              - bvn
+            example:
+              bvn: '22222222222'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: BVN verified successfully
+                success: true
+                data: {}
+                meta:
+                  settings: null
+          headers: {}
+          x-apidog-name: Add BVN
+      security: []
+      x-apidog-folder: User
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716516-run
+      operationId: postUsersKycVerifyBvn
+      x-operation-id-source: derived
+  /users/enable-2fa:
+    post:
+      summary: ENABLE 2FA
+      deprecated: false
+      description: ''
+      tags:
+      - User
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: 2FA has been enabled
+                success: true
+                data: {}
+                meta:
+                  settings: null
+          headers: {}
+          x-apidog-name: ENABLE 2FA
+      security: []
+      x-apidog-folder: User
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716517-run
+      operationId: postUsersEnable2fa
+      x-operation-id-source: derived
+  /users/generate-key:
+    post:
+      summary: GENERATE API KEY
+      deprecated: false
+      description: ''
+      tags:
+      - User
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      apiKey:
+                        type: string
+                    required:
+                    - apiKey
+                    x-apidog-orders:
+                    - apiKey
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: api key generated successfully
+                success: true
+                data:
+                  apiKey: PRIV_0cb6d7552c3ee9af5cf46750dd4aa4eff6b845b02a6aa97f16a5ac0f1443f203
+                meta:
+                  settings: null
+          headers: {}
+          x-apidog-name: GENERATE API KEY
+      security: []
+      x-apidog-folder: User
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716518-run
+      operationId: postUsersGenerateKey
+      x-operation-id-source: derived
+  /users/show-api-key:
+    get:
+      summary: FETCH API KEY
+      deprecated: false
+      description: ''
+      tags:
+      - User
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      apiKey:
+                        type: string
+                    required:
+                    - apiKey
+                    x-apidog-orders:
+                    - apiKey
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: api key fetched successfully
+                success: true
+                data:
+                  apiKey: PRIV_0cb6d7552c3ee9af5cf46750dd4aa4eff6b845b02a6aa97f16a5ac0f1443f203
+                meta:
+                  settings: null
+          headers: {}
+          x-apidog-name: FETCH API KEY
+      security: []
+      x-apidog-folder: User
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716519-run
+      operationId: getUsersShowApiKey
+      x-operation-id-source: derived
+  /users/disable-2fa:
+    post:
+      summary: DISABLE 2FA
+      deprecated: false
+      description: ''
+      tags:
+      - User
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: 2FA has been disabled
+                success: true
+                data: {}
+                meta:
+                  settings: null
+          headers: {}
+          x-apidog-name: DISABLE 2FA
+      security: []
+      x-apidog-folder: User
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716520-run
+      operationId: postUsersDisable2fa
+      x-operation-id-source: derived
+  /users/change-password:
+    patch:
+      summary: CHANGE PASSWORD
+      deprecated: false
+      description: ''
+      tags:
+      - User
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+                oldPassword:
+                  type: string
+              required:
+              - newPassword
+              - oldPassword
+              x-apidog-orders:
+              - newPassword
+              - oldPassword
+            example:
+              newPassword: Password1#
+              oldPassword: '#Password1#'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: password has changed successfully
+                success: true
+                data: {}
+                meta:
+                  settings: null
+          headers: {}
+          x-apidog-name: 200 CHANGE PASSWORD
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: you have previously used the new password, please choose a different one
+                meta:
+                  settings: null
+                errors: []
+          headers: {}
+          x-apidog-name: 403 CHANGE PASSWORD
+        '422':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        field:
+                          type: string
+                        location:
+                          type: string
+                      x-apidog-orders:
+                      - message
+                      - field
+                      - location
+                required:
+                - success
+                - message
+                - meta
+                - errors
+                x-apidog-orders:
+                - success
+                - message
+                - meta
+                - errors
+              example:
+                success: false
+                message: validation errors
+                meta:
+                  settings: null
+                errors:
+                - message: old and new passwords cannot be same
+                  field: oldPassword
+                  location: body
+          headers: {}
+          x-apidog-name: 422 CHANGE PASSWORD
+      security: []
+      x-apidog-folder: User
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716521-run
+      operationId: patchUsersChangePassword
+      x-operation-id-source: derived
+  /users/kyc/verify-kyc:
+    post:
+      summary: Verify KYC
+      deprecated: false
+      description: ''
+      tags:
+      - User
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                documents:
+                  type: array
+                  items:
+                    type: string
+                shareHoldersInfo:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                      email:
+                        type: string
+                      phoneNumber:
+                        type: string
+                      id:
+                        type: string
+                    x-apidog-orders:
+                    - firstName
+                    - lastName
+                    - email
+                    - phoneNumber
+                    - id
+              required:
+              - documents
+              - shareHoldersInfo
+              x-apidog-orders:
+              - documents
+              - shareHoldersInfo
+            example:
+              documents:
+              - https://staging.assets.cardtonic.com/64231c00502d07e517bee958/_XsJJHGdVrMzUj7zdvj1h.jpeg
+              shareHoldersInfo:
+              - firstName: Firstname
+                lastName: lastName
+                email: test@example.com
+                phoneNumber: '+2348000000000'
+                id: https://staging.assets.cardtonic.com/64231c00502d07e517bee958/_XsJJHGdVrMzUj7zdvj1h.jpeg
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties: {}
+                    x-apidog-orders: []
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: your verification request is received and pending approval
+                success: true
+                data: {}
+                meta:
+                  settings: null
+          headers: {}
+          x-apidog-name: Verify KYC
+      security: []
+      x-apidog-folder: User
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716522-run
+      operationId: postUsersKycVerifyKyc
+      x-operation-id-source: derived
+  /users/upload:
+    put:
+      summary: Upload File
+      deprecated: false
+      description: ''
+      tags:
+      - User
+      parameters:
+      - name: X-Tonic-Env
+        in: header
+        description: ''
+        required: true
+        example: development
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                    x-apidog-orders:
+                    - name
+                    - type
+              required:
+              - files
+              x-apidog-orders:
+              - files
+            example:
+              files:
+              - name: example.png
+                type: image/png
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        type:
+                          type: string
+                        url:
+                          type: string
+                        imageUrl:
+                          type: string
+                      x-apidog-orders:
+                      - name
+                      - type
+                      - url
+                      - imageUrl
+                  meta:
+                    type: object
+                    properties:
+                      settings:
+                        type: 'null'
+                    required:
+                    - settings
+                    x-apidog-orders:
+                    - settings
+                required:
+                - message
+                - success
+                - data
+                - meta
+                x-apidog-orders:
+                - message
+                - success
+                - data
+                - meta
+              example:
+                message: data fetched
+                success: true
+                data:
+                - name: example.png
+                  type: image/png
+                  url: https://fra1.digitaloceanspaces.com/cardtonic.staging/67196ce82eee9ec7461ec103/V4YEookeO5-6Fwy_.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=WOEEC5QQRLNU6ZREWUOY%2F20241029%2Ffra1%2Fs3%2Faws4_request&X-Amz-Date=20241029T125715Z&X-Amz-Expires=300&X-Amz-Signature=4f8c1caaf3e46cdf227d32aa217e71accd87b10f9af1a8dfebbc70316faf06aa&X-Amz-SignedHeaders=host&x-amz-acl=public-read&x-id=PutObject
+                  imageUrl: https://staging.assets.cardtonic.com/67196ce82eee9ec7461ec103/V4YEookeO5-6Fwy_.png
+                meta:
+                  settings: null
+          headers: {}
+          x-apidog-name: Upload File
+      security: []
+      x-apidog-folder: User
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/737471/apis/api-11716523-run
+      operationId: putUsersUpload
+      x-operation-id-source: derived

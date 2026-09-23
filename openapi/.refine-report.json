@@ -1,0 +1,29 @@
+{
+  "provider": "cardtonic",
+  "sources": [
+    "_original/cardtonic-business-api-openapi.yml"
+  ],
+  "outputs": [
+    "cardtonic-auth-api-openapi.yml",
+    "cardtonic-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [
+    "cardtonic-business-api-openapi.yml: info.title missing",
+    "cardtonic-business-api-openapi.yml: info.version missing"
+  ],
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cardtonic-business-api-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "cardtonic-business-api-openapi.yml: declared missing tag: Auth",
+    "cardtonic-business-api-openapi.yml: declared missing tag: User",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/cardtonic-openapi.yml: archived document superseded by a larger archived document",
+    "cardtonic-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cardtonic-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
