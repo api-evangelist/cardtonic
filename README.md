@@ -1,4 +1,4 @@
-# Cardtonic (cardtonic)
+# Cardtonic
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,106 +64,134 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Cardtonic is an Africa-focused fintech platform that lets users trade gift cards (sell unused cards for cash and buy over 14,000 local and international gift cards), issue virtual dollar cards, pay bills (airtime, data, electricity, TV, betting), purchase eSIMs in 140+ countries, and shop for gadgets through its Just Gadgets storefront. Cardtonic supports Naira and Cedi settlement for users in Nigeria and Ghana, holds PCI DSS certification, and operates under Nigeria Data Protection Commission (NDPC) oversight. For businesses, Cardtonic offers a Gift Card Developer API (currently waitlist-only) that lets merchants embed gift card purchasing, sales, bulk ordering, inventory, and redemption into websites, mobile apps, and point-of-sale systems.
+Cardtonic is an Africa-focused fintech platform, operated by The Tonic Technologies, that lets users trade gift cards (sell unused cards for cash and buy over 14,000 local and international gift cards), issue virtual dollar cards, pay bills (airtime, data, electricity, TV, betting), purchase eSIMs in 140+ countries, and shop for gadgets through its Just Gadgets storefront. Cardtonic supports Naira and Cedi settlement for users in Nigeria and Ghana, carries a PCI DSS certification badge, and is registered with the Nigeria Data Protection Commission (NDPC) as a Data Controller of Major Importance under the Nigeria Data Protection Act 2023. For businesses, Cardtonic advertises a Gift Card Developer API (waitlist-only, no published contract) and separately publishes a real OpenAPI 3.0.1 contract for its Business API - business signup, login, 2FA, BVN and corporate KYC, and API-key issuance - through an Apidog-hosted documentation site at docs.cardtonic.com, against the base https://api.cardtonic.com/v1.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cardtonic/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cardtonic/refs/heads/main/apis.yml)
+**Areas:** Africa · Bill Payments · eSIM · Finance · Fintech · Gift Cards · Ghana · Nigeria · Payments · Virtual Dollar Cards
 
-## Scope
+## Cardtonic on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Cardtonic is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cardtonic/](https://apis.io/providers/cardtonic/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Africa
-- Bill Payments
-- eSIM
-- Finance
-- Fintech
-- Gift Cards
-- Ghana
-- Nigeria
-- Payments
-- Virtual Dollar Cards
+- [Cardtonic Gift Card Developer API](https://apis.io/apis/cardtonic/gift-card-developer-api/) — The Cardtonic Gift Card Developer API enables merchants and platforms to integrate gift card services into their websites, mobile apps, and point-of-sale…
+- [Cardtonic Virtual Dollar Card](https://apis.io/apis/cardtonic/virtual-dollar-card/) — Cardtonic Virtual Dollar Cards are user-facing USD-denominated cards that let African customers pay merchants that accept Visa/Mastercard globally. The…
+- [Cardtonic Bill Payments](https://apis.io/apis/cardtonic/bill-payments/) — Cardtonic Bill Payments cover airtime top-ups, mobile data, electricity, TV subscriptions, and betting wallets across more than 100 countries, consumed…
+- [Cardtonic Auth API](https://apis.io/apis/cardtonic/cardtonic-auth-api/) — The Auth API from Cardtonic — 6 operation(s) for auth.
+- [Cardtonic User API](https://apis.io/apis/cardtonic/cardtonic-user-api/) — The User API from Cardtonic — 8 operation(s) for user.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-08
-- **Modified:** 2026-04-23
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Cardtonic Gift Card Developer API
+Model Context Protocol servers that expose the API to agents.
 
-The Cardtonic Gift Card Developer API enables merchants and platforms to integrate gift card services into their websites, mobile apps, and point-of-sale systems. The API exposes a catalog of more than 14,000 gift cards for purchase and sale, bulk ordering with instant reporting, inventory and redemption management, and branding/customization hooks. As of 2026 the API is in waitlist mode and developer credentials are issued through Cardtonic on request.
+- [cardtonic-mcp.yml](https://apis.io/servers/cardtonic/cardtonic-mcp-yml/)
 
-- **Human URL:** [https://cardtonic.com/developer](https://cardtonic.com/developer)
+#### Collections (1)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Gift Cards
-- Fintech
-- Payments
+- [API Collection](https://apis.io/collections/cardtonic/open-cardtonic/)
 
-#### Properties
+#### Overlays (1)
 
-- [Documentation](https://cardtonic.com/developer)
-- [Sign Up](https://cardtonic.com/developer)
-- [OpenAPI](openapi/cardtonic-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Open Collection](collections/cardtonic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-### Cardtonic Virtual Dollar Card
+- [Cardtonic Business Api Overlay](https://apis.io/overlays/cardtonic/cardtonic-business-api-overlay/)
 
-Cardtonic Virtual Dollar Cards are user-facing USD-denominated cards that let African customers pay merchants that accept Visa/Mastercard globally. The product is currently consumed through the Cardtonic app and dashboard; programmatic access for partners is available on request alongside the Gift Card Developer API waitlist.
+#### Security (2)
 
-- **Human URL:** [https://cardtonic.com/virtual-dollar-card](https://cardtonic.com/virtual-dollar-card)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Cardtonic Authentication](https://apis.io/security/cardtonic/cardtonic-authentication/)
+- [Cardtonic Domain Security](https://apis.io/security/cardtonic/cardtonic-domain-security/)
 
-- Cards
-- Fintech
-- Virtual Dollar Cards
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://cardtonic.com/virtual-dollar-card)
+- [Cardtonic Plans Pricing](https://apis.io/plans/cardtonic/cardtonic-plans-pricing/)
 
-### Cardtonic Bill Payments
+#### Rate limits (1)
 
-Cardtonic Bill Payments cover airtime top-ups, mobile data, electricity, TV subscriptions, and betting wallets across more than 100 countries, consumed through the Cardtonic app and dashboard. Partner access is available on request.
+Published request limits.
 
-- **Human URL:** [https://cardtonic.com/](https://cardtonic.com/)
+- [Cardtonic Rate Limits](https://apis.io/rate-limits/cardtonic/cardtonic-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- Bill Payments
-- Fintech
-- Payments
+What the API costs to run, by operation.
 
-#### Properties
+- [Cardtonic Finops](https://apis.io/finops/cardtonic/cardtonic-finops/)
 
-- [Documentation](https://cardtonic.com/)
+## Where to find this API
 
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://cardtonic.com/)
-- [Developer](https://cardtonic.com/developer)
-- [Dashboard](https://dashboard.cardtonic.com/)
-- [Login](https://cardtonic.com/login)
-- [Sign Up](https://cardtonic.com/register)
-- [About](https://cardtonic.com/about)
-- [Blog](https://cardtonic.com/blog)
-- [F A Q](https://cardtonic.com/faq)
-- [Contact](https://cardtonic.com/contact)
-- [Terms of Service](https://cardtonic.com/terms)
-- [Privacy Policy](https://cardtonic.com/privacy)
-- [X (Twitter)](https://x.com/cardtonic)
-- [LinkedIn](https://www.linkedin.com/company/cardtonic)
-- [Instagram](https://www.instagram.com/cardtonic/)
-- [L L Ms Txt](https://cardtonic.com/llms.txt)
+- [Documentation](https://docs.cardtonic.com)
+- [API reference](https://docs.cardtonic.com)
+- [Sign up](https://dashboard.cardtonic.com/signup)
+- [Support](https://help.cardtonic.com/en/)
+- [Blog](https://cardtonic.com/read)
+- [Terms of service](https://cardtonic.com/terms)
+- [Privacy policy](https://cardtonic.com/privacy)
+- [Status](https://status.cardtonic.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 48.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 39.5 |
+| Contract governance | 18.2 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 54.2 |
+| Access clarity | 63.2 |
+
+**Agent readiness 26.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 39.3** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cardtonic/](https://apis.io/providers/cardtonic/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cardtonic: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cardtonic/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
